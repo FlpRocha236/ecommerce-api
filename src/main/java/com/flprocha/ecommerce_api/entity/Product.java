@@ -39,6 +39,7 @@ public class Product {
     @Column(nullable = false)
     private Integer stockQuantity;
 
+    @Builder.Default
     private boolean active = true;
 
     @CreationTimestamp
