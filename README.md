@@ -22,11 +22,14 @@ API REST de e-commerce desenvolvida com Spring Boot seguindo boas práticas de m
 
 - ✅ CRUD de Produtos com controle de estoque
 - ✅ Carrinho de compras por cliente
-- ✅ Gestão de Pedidos com controle de status
+- ✅ Gestão de Pedidos com baixa automática de estoque
+- ✅ Pagamento simulado com mudança de status
+- ✅ Cancelamento de pedidos com devolução de estoque
 - ✅ Tratamento global de exceções
 - ✅ Validação de dados de entrada
 - ✅ Paginação e ordenação
 - ✅ Documentação Swagger
+- ✅ CORS configurado para Angular
 
 ## ⚙️ Como executar localmente
 
@@ -68,11 +71,21 @@ src/main/java/com/flprocha/ecommerce_api/
 │   ├── request/   ← Dados de entrada
 │   └── response/  ← Dados de saída
 ├── exception/     ← Tratamento de erros
-└── config/        ← Configurações
+└── config/        ← Configurações CORS
 ```
 
-## 📌 Endpoints principais
+## 🔄 Fluxo completo
+```
+1. Criar produto    →  POST /api/v1/products
+2. Adicionar ao carrinho  →  POST /api/v1/cart/add
+3. Criar pedido     →  POST /api/v1/orders
+4. Processar pagamento  →  PATCH /api/v1/orders/{id}/pay
+5. Cancelar pedido  →  PATCH /api/v1/orders/{id}/cancel
+```
 
+## 📌 Endpoints
+
+### Produtos
 | Método | Endpoint | Descrição |
 |--------|----------|-----------|
 | POST | /api/v1/products | Criar produto |
@@ -80,11 +93,23 @@ src/main/java/com/flprocha/ecommerce_api/
 | GET | /api/v1/products/{id} | Buscar produto |
 | PUT | /api/v1/products/{id} | Atualizar produto |
 | DELETE | /api/v1/products/{id} | Desativar produto |
-| POST | /api/v1/cart/add | Adicionar ao carrinho |
+
+### Carrinho
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| POST | /api/v1/cart/add | Adicionar item |
 | GET | /api/v1/cart/{email} | Ver carrinho |
+| DELETE | /api/v1/cart/{email}/item/{productId} | Remover item |
+| DELETE | /api/v1/cart/{email}/clear | Limpar carrinho |
+
+### Pedidos
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
 | POST | /api/v1/orders | Criar pedido |
 | GET | /api/v1/orders/{id} | Buscar pedido |
+| GET | /api/v1/orders/customer/{email} | Pedidos do cliente |
 | PATCH | /api/v1/orders/{id}/pay | Processar pagamento |
+| PATCH | /api/v1/orders/{id}/cancel | Cancelar pedido |
 
 ## 👨‍💻 Autor
 
