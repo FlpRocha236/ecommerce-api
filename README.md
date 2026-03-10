@@ -4,6 +4,7 @@
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.5.11-green)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue)
 ![Swagger](https://img.shields.io/badge/Swagger-OpenAPI_3-brightgreen)
+![JUnit](https://img.shields.io/badge/JUnit-5-red)
 
 API REST de e-commerce desenvolvida com Spring Boot seguindo boas práticas de mercado.
 
@@ -28,8 +29,9 @@ API REST de e-commerce desenvolvida com Spring Boot seguindo boas práticas de m
 - ✅ Tratamento global de exceções
 - ✅ Validação de dados de entrada
 - ✅ Paginação e ordenação
-- ✅ Documentação Swagger
+- ✅ Documentação Swagger completa
 - ✅ CORS configurado para Angular
+- ✅ Testes unitários com JUnit 5 + Mockito
 
 ## ⚙️ Como executar localmente
 
@@ -50,7 +52,7 @@ docker-compose up -d
 ./mvnw spring-boot:run
 ```
 
-### Acesse a documentação
+### Acesse a documentação Swagger
 ```
 http://localhost:8080/swagger-ui/index.html
 ```
@@ -76,11 +78,11 @@ src/main/java/com/flprocha/ecommerce_api/
 
 ## 🔄 Fluxo completo
 ```
-1. Criar produto    →  POST /api/v1/products
-2. Adicionar ao carrinho  →  POST /api/v1/cart/add
-3. Criar pedido     →  POST /api/v1/orders
-4. Processar pagamento  →  PATCH /api/v1/orders/{id}/pay
-5. Cancelar pedido  →  PATCH /api/v1/orders/{id}/cancel
+1. Criar produto         →  POST /api/v1/products
+2. Adicionar ao carrinho →  POST /api/v1/cart/add
+3. Criar pedido          →  POST /api/v1/orders
+4. Processar pagamento   →  PATCH /api/v1/orders/{id}/pay
+5. Cancelar pedido       →  PATCH /api/v1/orders/{id}/cancel
 ```
 
 ## 📌 Endpoints
@@ -110,6 +112,10 @@ src/main/java/com/flprocha/ecommerce_api/
 | GET | /api/v1/orders/customer/{email} | Pedidos do cliente |
 | PATCH | /api/v1/orders/{id}/pay | Processar pagamento |
 | PATCH | /api/v1/orders/{id}/cancel | Cancelar pedido |
+
+## 🔗 Projetos relacionados
+
+- [ecommerce-frontend](https://github.com/FlpRocha236/ecommerce-frontend) — Frontend Angular com design Apple-inspired
 
 ## 👨‍💻 Autor
 
